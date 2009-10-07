@@ -1,6 +1,30 @@
-{% load disqus_tags cache %}
-<div id="comments">
-{% with BLOG_SETTINGS.disqus_shortname as shortname %}
-{% disqus_show_comments "" "" "" shortname %}
-{% endwith %}
+{% load pygment_tags markup_tags threadedcomments_tags i18n %}
+{% get_comment_list for object as responses %}
+{% if responses %}
+<ul class="responses clearfix grid_9">
+{% for response in responses %}
+  <li class="{% cycle even,odd %} comment-{{ response.pk }} clearfix">
+        <div class="meta grid_2 alpha">
+            <div class="respondent">
+                {% if response.user_url %}
+                <a href="{{ response.user_url }}">{{ response.name }}</a>
+                {% else %}
+                {{ response.name }}
+                {% endif %}
+            </div>
+            <div class="date">{{ response.submit_date|date }}</div>
+        </div>
+        <div class="body grid_7 omega">
+            {{ response.comment|force_escape|apply_markup:"markdown"|pygmentize|safe }}
+        </div>
+    </li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No comments yet.</p>
+{% endif %}
+
+<div>
+    {% render_comment_form for object %}
 </div>
+
