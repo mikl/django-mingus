@@ -13,9 +13,7 @@
     <meta name="description" content="{{ BLOG_SETTINGS.meta_description }}">
     <meta name="author" content="{{ BLOG_SETTINGS.author_name }}">
     {% endblock %}
-
-     <meta name="copyright" content="{{ BLOG_SETTINGS.copyright }}">
-     <link rel="shortcut icon" href="{{ STATIC_URL }}imgs/favicon.ico" type="image/x-icon">
+    <meta name="copyright" content="{{ BLOG_SETTINGS.copyright }}">
 
   {% block rss %}
   <link rel="alternate" type="application/rss+xml" title="{{ BLOG_SETTINGS.site_name }} main rss feed" href="{{ BLOG_SETTINGS.rss_url }}">
@@ -41,7 +39,7 @@
     {% block extra_head %}{% endblock %}
   </head>
 
-<body id="{% block body_id %}mingus-page{% endblock %}" class="{% block body_class %}blog{% endblock %}">
+<body id="{% block body_id %}mingus-blog{% endblock %}" class="{% block body_class %}blog{% endblock %}">
 <div id="bleeder"></div>
 
   <div id="body-container" class="clearfix">
