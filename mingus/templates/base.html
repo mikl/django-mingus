@@ -1,4 +1,4 @@
-{% load disqus_tags flatblock_tags cache navbar generic_content blog compress analytics elsewhere feeds i18n archive %}
+{% load flatblock_tags cache navbar generic_content blog compress analytics elsewhere feeds i18n archive %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/960.css" type="text/css" media="all" charset="utf-8">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/pygments.css" type="text/css" media="all" charset="utf-8">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" media="all" charset="utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/themes/basic.css" type="text/css" media="all" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/themes/spring_green.css" type="text/css" media="all" charset="utf-8">
     {% endcompress %}
 
     <!--[if IE 6]>
@@ -38,7 +38,6 @@
     </script>
     <![endif]-->
 
-    {% disqus_dev %}
     {% block extra_head %}{% endblock %}
   </head>
 
@@ -51,7 +50,6 @@
   <div id="header" class="clearfix">
     <div id="logo">
       <h1><a href="/" title="{{ BLOG_SETTINGS.site_name }}}">{{ BLOG_SETTINGS.site_name }}</a></h1>
-      <!-- a href="{{ SITE_URL }}" title="Monty Lounge Industries Blog"><img class="logo" src="{{ STATIC_URL }}imgs/logo-blog-color-trans2.png" alt="Monty Lounge Industries"></a -->
     </div>
     <!-- /logo -->
 
@@ -81,11 +79,9 @@
       <h4>{% trans "About" %}</h4>
       <p>{{ BLOG_SETTINGS.about }}</p>
 
-      <h4>Subscribe</h4>
+      <h4>Feeds</h4>
       <ul>
-        <li><a href="{{ BLOG_SETTINGS.twitter_url }}" title="Follow me on Twitter">Twitter</a></li>
         <li><a href="{{ BLOG_SETTINGS.rss_url }}" title"Subscribe via RSS">RSS</a></li>
-        <li><a href="{{ BLOG_SETTINGS.email_subscribe_url }}" title="Subscribe via Email">Email</a></li>
       </ul>
 
       <h4>{% trans "Elsewhere" %}</h4>
@@ -144,16 +140,6 @@
       {% get_popular_posts 10 as popular_post_list %}
       {% for item in popular_post_list %}
       <li><a href="{{ item.get_absolute_url }}" title="{{ item.title }}">{{ item.title }}</a></li>
-      {% endfor %}
-      </ul>
-      {% endcache %}
-
-      {% cache 3600 "delicious.popular" %}
-      {% parse_feed 'http://feeds.delicious.com/v2/rss/tag/django?count=15' as items %}
-      <h4>{% trans "Django Popular" %}</h4>
-      <ul class="recent-posts">
-      {% for item in items.entries %}
-      <li><a href="{{ item.link }}" title="{{ item.title }}">{{ item.title }}</a></li>
       {% endfor %}
       </ul>
       {% endcache %}

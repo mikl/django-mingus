@@ -68,6 +68,7 @@ urlpatterns += patterns('',
             name='blog_tag_detail'),
 
     (r'', include('basic.blog.urls')),
+    (r'^comments/', include('django.contrib.comments.urls')),
 )
 
 

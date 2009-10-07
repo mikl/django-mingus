@@ -1,0 +1,57 @@
+/* @override http://localhost:8000/site_media/static/css/themes/spring_green.css */
+
+/**
+ * Green colour scheme for Django Mingus
+ *
+ * Made for mikkel.hoegh.org by Mikkel Hoegh, based on the Spring Green
+ * palette from Colour Lovers:
+ * http://www.colourlovers.com/palette/885013/Spring_Green
+ */
+
+body {
+    color: #3f5c3b;
+    background: #fbfff7;
+}
+
+/* layout */
+.post .date, .quote .date, .bookmark .date {
+	float: left;
+	padding: .3em .4em .3em 1.2em;
+	background: #618d5a;
+	margin: 0.3em 0  0 -6.0em;
+	width: 3.8em;
+}
+.post .teaser { border-bottom: solid 1.0em #618d5a; }
+
+/* type */
+h4 { color: #3f5c3b; }
+#right-rail p, #right-rail ul { color: #618d5a; }
+
+/* links */
+a:link, a:visited { color: #618d5a; }
+a:hover { color: #8cbc66; }
+h2 a:link, h2 a:visited { color: #3f5c3b; }
+h2 a:hover { color: #3f5c3b; }
+
+pre {
+  color: #4f5c4e;
+  background-color: #e4f1c3;
+}
+
+/* COMMENTS */
+
+ul.responses {
+  margin: 2em 0 2em 0;
+  border-top: 1px solid #bcd8b8;
+  padding-top: 1em;
+}
+
+ul.responses li {
+  border-bottom: 1px solid #bcd8b8;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+ul.responses li .meta {
+  font-size: 0.8em;
+}

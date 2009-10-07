@@ -34,7 +34,6 @@ MIDDLEWARE_CLASSES = (
 'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 'sugar.middleware.debugging.UserBasedExceptionMiddleware',
 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-'djangodblog.DBLogMiddleware',
 'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
@@ -51,6 +50,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 INSTALLED_APPS = (
   'django.contrib.auth',
   'django.contrib.contenttypes',
+  'django.contrib.comments',
   'django.contrib.sessions',
   'django.contrib.sites',
   'django.contrib.admin',
@@ -60,8 +60,6 @@ INSTALLED_APPS = (
 
   'django_extensions',
   'tagging',
-  'djangodblog',
-  'disqus',
   'basic.inlines',
   'basic.blog',
   'basic.bookmarks',
@@ -76,14 +74,13 @@ INSTALLED_APPS = (
 
   'django_markup',
   'google_analytics',
-  'robots',
   'basic.elsewhere',
   'compressor',
   'debug_toolbar',
   'contact_form',
   'honeypot',
   'sugar',
-  'quoteme',
+  'threadedcomments',
   'mingus',
 )
 
