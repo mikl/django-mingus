@@ -48,7 +48,12 @@ class BlogPostsByCategory(Feed):
         return "Posts recently categorized as %s" % obj.title
 
     def items(self, obj):
-        return obj.post_set.published()[:10]
+        # Temporary date filter to prevent repost of old content to blog
+        # aggregation sites.
+        from datetime import date
+        date(2009, 10, 01)
+
+        return obj.post_set.published().filter(publish__gt=date(2009, 10, 01))[:10]
 
 
 class CommentsFeed(Feed):
