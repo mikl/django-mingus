@@ -6,7 +6,6 @@ from basic.blog import views as blog_views
 from basic.blog.sitemap import BlogSitemap
 from mingus.core.views import springsteen_results, springsteen_firehose, \
                             home_list, springsteen_category, contact_form
-from robots.views import rules_list
 from mingus.core import feeds
 
 admin.autodiscover()
