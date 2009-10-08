@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import os, os.path, sys
-from os.path import join, dirname, normpath
-import re
+import os
 
 PROJECT_ROOT = os.path.dirname(__file__)
-MEDIA_ROOT = join(PROJECT_ROOT, 'media')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 MEDIA_URL = '/media/'
-STATIC_ROOT = join(MEDIA_ROOT, 'static')
+STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
 STATIC_URL = '/media/static/'
 ADMIN_MEDIA_PREFIX = '/admin_media/'
 
