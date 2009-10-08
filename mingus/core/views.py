@@ -131,44 +131,6 @@ def home_list(request, page=0, template_name='proxy/proxy_list.html', **kwargs):
     )
 
 
-def quote_list(request, template_name='quotes/quote_list.html', **kwargs):
-    '''
-    A basic cxample of overriding a reusable apps view to customize.
-
-    Displays quote list view. No paging added, but can be on your own.
-    '''
-
-    from quoteme.views import quote_list
-    favorite_jazz_album = getattr(settings, 'FAVORITE_JAZZ_ALBUM', 'Money Jungle')
-    extra = {
-        'favorite_jazz_album': favorite_jazz_album,
-    }
-
-    return quote_list(request, template_name=template_name, extra_context=extra, **kwargs)
-
-
-def quote_detail(request, template_name='quotes/quote_detail.html', **kwargs):
-    '''
-    A basic cxample of overriding a reusable apps view to customize.
-
-    Displays quote detail view.
-    '''
-
-    from quoteme.views import quote_detail
-    favorite_food = getattr(settings, 'FAVORITE_FOOD', 'Pizza')
-    extra = {
-        'favorite_food': favorite_food,
-    }
-
-    return quote_detail(request, template_name=template_name,
-                        extra_context=extra, **kwargs)
-
-
-def oops(request):
-    '''An view that exists soley to provide an example of using django-db-log.'''
-    foo = 1/0
-
-
 def tag_detail(request, slug, template_name='proxy/tag_detail.html', **kwargs):
     ''' Display objects for all content types supported: Post and Quotes.'''
 
