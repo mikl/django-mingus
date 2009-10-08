@@ -55,6 +55,9 @@ class BlogPostsByCategory(Feed):
 
         return obj.post_set.published().filter(publish__gt=date(2009, 10, 01))[:10]
 
+    def item_pubdate(self, obj):
+        return obj.publish
+
 
 class CommentsFeed(Feed):
     _site = Site.objects.get_current()
@@ -92,5 +95,9 @@ class AllEntries(Feed):
 
     def item_categories(self, item):
         return item.tags.replace(',', '').split()
+
+    def item_pubdate(self, item):
+        return item.pub_date
+
 
 
