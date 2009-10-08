@@ -3,19 +3,19 @@ from django.contrib import admin
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
 from basic.blog import views as blog_views
-from basic.blog.feeds import BlogPostsFeed, BlogPostsByCategory
 from basic.blog.sitemap import BlogSitemap
 from mingus.core.views import springsteen_results, springsteen_firehose, \
                             home_list, springsteen_category, contact_form
 from robots.views import rules_list
-from mingus.core.feeds import AllEntries
+from mingus.core import feeds
 
 admin.autodiscover()
 
 feeds = {
-    'latest': BlogPostsFeed,
-    'all': AllEntries,
-    'categories': BlogPostsByCategory,
+    'latest': feeds.BlogPostsFeed,
+    'all': feeds.AllEntries,
+    'categories': feeds.BlogPostsByCategory,
+    'comments': feeds.CommentsFeed
 }
 #ex: /feeds/latest/
 #ex: /feeds/all/
@@ -37,10 +37,6 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-    url(r'^oops/$', 'mingus.core.views.oops', name='raise_exception'),
-    url(r'^quotes/$', 'mingus.core.views.quote_list', name='quote_list'),
-    url(r'^quotes/(?P<slug>[-\w]+)/$', 'mingus.core.views.quote_detail', name='quote_detail'),
-    url(r'robots.txt$', rules_list, name='robots_rule_list'),
     (r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
     (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^api/springsteen/posts/$', springsteen_results),
@@ -67,7 +63,7 @@ urlpatterns += patterns('',
     url(r'^tags/(?P<slug>[-\w]+)/$', 'mingus.core.views.tag_detail',
             name='blog_tag_detail'),
 
-    (r'', include('basic.blog.urls')),
+    (r'^blog/', include('basic.blog.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
 )
 
