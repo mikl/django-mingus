@@ -29,7 +29,6 @@ MIDDLEWARE_CLASSES = (
 'django.contrib.sessions.middleware.SessionMiddleware',
 'django.contrib.auth.middleware.AuthenticationMiddleware',
 'django.middleware.doc.XViewMiddleware',
-'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 'sugar.middleware.debugging.UserBasedExceptionMiddleware',
 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -46,15 +45,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 INSTALLED_APPS = (
-  'django.contrib.auth',
-  'django.contrib.contenttypes',
-  'django.contrib.comments',
-  'django.contrib.sessions',
-  'django.contrib.sites',
   'django.contrib.admin',
-  'django.contrib.sitemaps',
+  'django.contrib.auth',
+  'django.contrib.comments',
+  'django.contrib.contenttypes',
   'django.contrib.flatpages',
-  'django.contrib.redirects',
+  'django.contrib.sessions',
+  'django.contrib.sitemaps',
+  'django.contrib.sites',
 
   'django_extensions',
   'tagging',
