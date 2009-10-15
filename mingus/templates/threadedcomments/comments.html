@@ -1,0 +1,35 @@
+{% load threadedcomments_tags %}
+{% load i18n %}
+{% load markup_tags %}
+{% load pygment_tags %}
+{% load pagination_tags %}
+
+{% get_comment_list for object as responses %}
+{% autopaginate responses %}
+
+<ul class="responses clearfix grid_9">
+{% for response in responses %}
+  <li class="{% cycle even,odd %} comment-{{ response.pk }} clearfix">
+        <div class="meta grid_2 alpha">
+            {# TODO: Find a way to make avatars work #}
+            {#<div class="avatar">{% avatar response.user 40 %}</div>#}
+            <div class="respondent">
+                {% if response.user_url %}
+                <a href="{{ response.user_url }}">{{ response.name }}</a>
+                {% else %}
+                {{ response.name }}
+                {% endif %}
+            </div>
+            <div class="date">{{ response.submit_date|date }}</div>
+        </div>
+        <div class="body grid_7 omega">
+            {{ response.comment|force_escape|apply_markup:"markdown"|pygmentize|safe }}
+        </div>
+    </li>
+{% endfor %}
+</ul>
+
+{% paginate %}
+
+{% render_comment_form for object %}
+
