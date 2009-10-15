@@ -21,7 +21,7 @@ class BlogPostsFeed(Feed):
         return reverse('blog_index')
 
     def items(self):
-        return Post.objects.published()[:10]
+        return Post.objects.published().order_by('-publish')[:10]
 
     def item_pubdate(self, obj):
         return obj.publish
@@ -53,7 +53,7 @@ class BlogPostsByCategory(Feed):
         from datetime import date
         date(2009, 10, 01)
 
-        return obj.post_set.published().filter(publish__gt=date(2009, 10, 01))[:10]
+        return obj.post_set.published().filter(publish__gt=date(2009, 10, 01)).order_by('-publish')[:10]
 
     def item_pubdate(self, obj):
         return obj.publish
@@ -70,7 +70,7 @@ class CommentsFeed(Feed):
 
     def items(self):
         ctype = ContentType.objects.get_for_model(Post)
-        return Comment.objects.filter(content_type=ctype)[:10]
+        return Comment.objects.filter(content_type=ctype).order_by('-submit_date')[:10]
 
     def item_pubdate(self, obj):
         return obj.submit_date
