@@ -47,7 +47,7 @@
   {% if tag_list %}
   <p class="inline_tag_list"><strong>Tags:</strong>
     {% for tag in tag_list %}
-    <a href="/tags/{{ tag }}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+    <a href="{% url blog_tag_detail slug=tag %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
     {% endfor %}
   </p>
   {% endif %}
