@@ -11,6 +11,7 @@ ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 SITE_ID=1
 ROOT_URLCONF = 'mingus.urls'
+LANGUAGE_CODE = 'en'
 TIME_ZONE = 'America/New_York'
 SECRET_KEY = '+bq@o(jph^-*sfj4j%xukecxb0jae9lci&ysy=609hj@(l$47c'
 USE_I18N = False
