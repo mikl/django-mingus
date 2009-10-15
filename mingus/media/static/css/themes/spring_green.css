@@ -13,6 +13,10 @@ body {
     background: #fbfff7;
 }
 
+#nav ul li a {
+  font-weight: 200;
+}
+
 /* layout */
 .post .date, .quote .date, .bookmark .date {
 	float: left;
