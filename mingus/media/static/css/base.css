@@ -115,9 +115,19 @@ body {
 ul.recent-posts li, .post li
 {
     list-style: disc;
-    left-margin: 1.2em;
     list-style-position: inside;
     color: #333940;
+}
+
+.post .body ol,
+.post .body ul {
+    margin-left: 0;
+}
+
+.post .body li {
+    color: inherit;
+    list-style-position: outside;
+    margin-left: 0;
 }
 
 .bookmark p{ margin-top: .8em;}
@@ -143,7 +153,6 @@ label
 /* CODE */
 pre 
 {
-	overflow: auto;
 	overflow: auto;
 	z-index: 0;
 	background-color: #fff;
