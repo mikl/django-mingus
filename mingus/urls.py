@@ -68,8 +68,6 @@ urlpatterns += patterns('',
     url (r'^search/$',
         view=proxy_search,
         name='proxy_search'),
-
-    (r'', include('basic.blog.urls')),
 )
 
 
