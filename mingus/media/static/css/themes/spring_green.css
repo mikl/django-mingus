@@ -37,7 +37,10 @@ a:hover { color: #8cbc66; }
 h2 a:link, h2 a:visited { color: #3f5c3b; }
 h2 a:hover { color: #3f5c3b; }
 
-blockquote,
+blockquote {
+  border-left-color: #618d5a;
+}
+
 pre {
   color: #4f5c4e;
   background-color: #e4f1c3;
