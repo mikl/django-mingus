@@ -5,7 +5,8 @@ from django.conf import settings
 from basic.blog import views as blog_views
 from basic.blog.sitemap import BlogSitemap
 from mingus.core.views import springsteen_results, springsteen_firehose, \
-                            home_list, springsteen_category, contact_form
+                            home_list, springsteen_category, contact_form, \
+                            proxy_search
 from mingus.core import feeds
 
 admin.autodiscover()
@@ -64,6 +65,11 @@ urlpatterns += patterns('',
 
     (r'^blog/', include('basic.blog.urls')),
     (r'^comments/', include('django.contrib.comments.urls')),
+    url (r'^search/$',
+        view=proxy_search,
+        name='proxy_search'),
+
+    (r'', include('basic.blog.urls')),
 )
 
 
