@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse
 from django.utils.feedgenerator import Atom1Feed
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.syndication.feeds import Feed
+from django.contrib.syndication.feeds import Feed, FeedDoesNotExist
 from django.contrib.sites.models import Site
 
 from basic.blog.models import Post, Category, Settings
@@ -36,7 +36,7 @@ class BlogPostsByCategory(Feed):
 
     def get_object(self, bits):
         if len(bits) != 1:
-            raise ObjectDoesNotExist
+            raise FeedDoesNotExist
         return Category.objects.get(slug__exact=bits[0])
 
     def link(self, obj):
