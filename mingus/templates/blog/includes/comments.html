@@ -1,10 +1,12 @@
-{% load pygment_tags markup_tags threadedcomments_tags i18n %}
+{% load markup threadedcomments_tags i18n %}
 {% get_comment_list for object as responses %}
 {% if responses %}
 <ul class="responses clearfix grid_9">
 {% for response in responses %}
-  <li class="{% cycle even,odd %} comment-{{ response.pk }} clearfix">
+    <li id="c{{ response.pk }}" class="comment {% cycle even,odd %} clearfix">
         <div class="meta grid_2 alpha">
+            {# TODO: Find a way to make avatars work #}
+            {#<div class="avatar">{% avatar response.user 40 %}</div>#}
             <div class="respondent">
                 {% if response.user_url %}
                 <a href="{{ response.user_url }}">{{ response.name }}</a>
@@ -15,7 +17,7 @@
             <div class="date">{{ response.submit_date|date }}</div>
         </div>
         <div class="body grid_7 omega">
-            {{ response.comment|force_escape|apply_markup:"markdown"|pygmentize|safe }}
+            {{ response.comment|markdown:"safe" }}
         </div>
     </li>
 {% endfor %}

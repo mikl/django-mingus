@@ -124,7 +124,8 @@ ul.recent-posts li, .post li
     margin-left: 0;
 }
 
-.post .body li {
+.post .body li,
+ul.response div.body li {
     color: inherit;
     list-style-position: outside;
     margin-left: 0;
